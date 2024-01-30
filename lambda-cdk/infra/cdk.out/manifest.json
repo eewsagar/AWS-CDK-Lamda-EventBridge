@@ -1,0 +1,107 @@
+{
+  "version": "36.0.0",
+  "artifacts": {
+    "LamdbaCDKStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "LamdbaCDKStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "LamdbaCDKStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "LamdbaCDKStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5464458fd4d3c217cdcd129f8b08ded5571a9a5773ff270e10dabfad9a36d806.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "LamdbaCDKStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "LamdbaCDKStack.assets"
+      ],
+      "metadata": {
+        "/LamdbaCDKStack/hello-world-lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloworldlambdaServiceRole1E1C4841"
+          }
+        ],
+        "/LamdbaCDKStack/hello-world-lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloworldlambda89B27E55"
+          }
+        ],
+        "/LamdbaCDKStack/hello-world-eventbridge-lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloworldeventbridgelambdaServiceRole8B861F91"
+          }
+        ],
+        "/LamdbaCDKStack/hello-world-eventbridge-lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloworldeventbridgelambdaCE0373A9"
+          }
+        ],
+        "/LamdbaCDKStack/lambda-scheduler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "lambdaschedulerA538E6EB"
+          }
+        ],
+        "/LamdbaCDKStack/lambda-scheduler/AllowEventRuleLamdbaCDKStackhelloworldeventbridgelambdaE5AF5CFC": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "lambdaschedulerAllowEventRuleLamdbaCDKStackhelloworldeventbridgelambdaE5AF5CFC22978F0A"
+          }
+        ],
+        "/LamdbaCDKStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/LamdbaCDKStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/LamdbaCDKStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/LamdbaCDKStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "LamdbaCDKStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

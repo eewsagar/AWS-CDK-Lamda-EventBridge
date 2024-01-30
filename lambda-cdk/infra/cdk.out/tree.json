@@ -1,0 +1,383 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "LamdbaCDKStack": {
+        "id": "LamdbaCDKStack",
+        "path": "LamdbaCDKStack",
+        "children": {
+          "hello-world-lambda": {
+            "id": "hello-world-lambda",
+            "path": "LamdbaCDKStack/hello-world-lambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "LamdbaCDKStack/hello-world-lambda/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "LamdbaCDKStack/hello-world-lambda/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.122.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "LamdbaCDKStack/hello-world-lambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.122.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.122.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "LamdbaCDKStack/hello-world-lambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "LamdbaCDKStack/hello-world-lambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.122.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "LamdbaCDKStack/hello-world-lambda/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.122.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.122.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "LamdbaCDKStack/hello-world-lambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "0e10398e511d7240bd546537e8de1db2df2c5e33864b1091987a01ef156b349b.jar"
+                    },
+                    "functionName": "HelloWorldLambda",
+                    "handler": "org.functions.HelloWorldLambda",
+                    "memorySize": 128,
+                    "role": {
+                      "Fn::GetAtt": [
+                        "helloworldlambdaServiceRole1E1C4841",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "java11",
+                    "timeout": 20
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.122.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.122.0"
+            }
+          },
+          "hello-world-eventbridge-lambda": {
+            "id": "hello-world-eventbridge-lambda",
+            "path": "LamdbaCDKStack/hello-world-eventbridge-lambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "LamdbaCDKStack/hello-world-eventbridge-lambda/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "LamdbaCDKStack/hello-world-eventbridge-lambda/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.122.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "LamdbaCDKStack/hello-world-eventbridge-lambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.122.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.122.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "LamdbaCDKStack/hello-world-eventbridge-lambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "LamdbaCDKStack/hello-world-eventbridge-lambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.122.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "LamdbaCDKStack/hello-world-eventbridge-lambda/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.122.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.122.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "LamdbaCDKStack/hello-world-eventbridge-lambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "0e10398e511d7240bd546537e8de1db2df2c5e33864b1091987a01ef156b349b.jar"
+                    },
+                    "functionName": "HelloWorldLambdaEventBridge",
+                    "handler": "org.functions.HelloWorldLambdaEventBridge::handleRequest",
+                    "memorySize": 128,
+                    "role": {
+                      "Fn::GetAtt": [
+                        "helloworldeventbridgelambdaServiceRole8B861F91",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "java11",
+                    "timeout": 20
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.122.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.122.0"
+            }
+          },
+          "lambda-scheduler": {
+            "id": "lambda-scheduler",
+            "path": "LamdbaCDKStack/lambda-scheduler",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "LamdbaCDKStack/lambda-scheduler/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Events::Rule",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "LambdaRule",
+                    "scheduleExpression": "rate(1 minute)",
+                    "state": "ENABLED",
+                    "targets": [
+                      {
+                        "id": "Target0",
+                        "arn": {
+                          "Fn::GetAtt": [
+                            "helloworldeventbridgelambdaCE0373A9",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_events.CfnRule",
+                  "version": "2.122.0"
+                }
+              },
+              "AllowEventRuleLamdbaCDKStackhelloworldeventbridgelambdaE5AF5CFC": {
+                "id": "AllowEventRuleLamdbaCDKStackhelloworldeventbridgelambdaE5AF5CFC",
+                "path": "LamdbaCDKStack/lambda-scheduler/AllowEventRuleLamdbaCDKStackhelloworldeventbridgelambdaE5AF5CFC",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "helloworldeventbridgelambdaCE0373A9",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "events.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::GetAtt": [
+                        "lambdaschedulerA538E6EB",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.122.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_events.Rule",
+              "version": "2.122.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "LamdbaCDKStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "LamdbaCDKStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.122.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "LamdbaCDKStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.122.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "LamdbaCDKStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.122.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "LamdbaCDKStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.122.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.122.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.3.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.122.0"
+    }
+  }
+}
